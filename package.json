@@ -1,0 +1,19 @@
+{
+  "name": "iimonitor-server",
+  "version": "1.0.0",
+  "description": "Server side for iimonitor",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoineLZCH/iimonitor.git"
+  },
+  "author": "antoineLZCH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoineLZCH/iimonitor/issues"
+  },
+  "homepage": "https://github.com/antoineLZCH/iimonitor#readme"
+}
