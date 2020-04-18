@@ -1,5 +1,5 @@
 {
-  "name": "ii-monitor",
+  "name": "iimonitor",
   "version": "1.0.0",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -59,8 +59,7 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-merge": "^4.2.1"
   },
-  "bundlesize": [
-    {
+  "bundlesize": [{
       "path": "./dist/js/chunk-vendors*.js",
       "maxSize": "125 kB"
     },

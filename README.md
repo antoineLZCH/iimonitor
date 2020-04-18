@@ -1,4 +1,4 @@
-# My bento-starter project
+# IIMonitor - Client powered by bento-starter
 
 ## Documentation
 
