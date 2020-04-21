@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { fireDb, fieldValue } from "~/plugins/firebase.js";
+import { createId } from "~/helpers/helpers";
 export default {
   data() {
     return {
@@ -62,27 +64,34 @@ export default {
     };
   },
   methods: {
-    createProject() {
-      let id = Math.random()
-        .toString(36)
-        .slice(2);
-      this.$store.commit("newProject", {
+    async createProject() {
+      let id = createId();
+      const ref = fireDb.collection("projects").doc(id);
+      const document = {
         id: id,
         title: this.title,
         desc: this.desc,
         tasks: []
-      });
-      this.$toast.show("Success creating project !");
+      };
+      try {
+        await ref.set(document);
+        this.$toast.show("Success creating project !");
+      } catch (e) {
+        console.error(e);
+        this.$toast.show("Something went wrong.");
+      }
       this.projectDialog = false;
       this.title = "";
       this.desc = "";
     },
-    createTask() {
-      this.$store.commit("newTask", {
-        id: this.$route.params.id,
-        todo: this.task
-      });
-      this.$toast.show("Success creating task !");
+    async createTask() {
+      const ref = fireDb.collection("projects").doc(this.$route.params.id);
+      try {
+        await ref.update({ tasks: fieldValue.arrayUnion(this.task) });
+        this.$toast.show("Success creating task !");
+      } catch (e) {
+        console.error(e);
+      }
       this.taskDialog = false;
       this.task = "";
     }

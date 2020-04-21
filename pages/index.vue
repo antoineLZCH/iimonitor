@@ -6,14 +6,32 @@
 
 <script>
 import ProjectCard from "~/components/ProjectCard";
-
+import { fireDb } from "~/plugins/firebase.js";
 export default {
   components: {
     ProjectCard
   },
-  computed: {
-    projects() {
-      return this.$store.state.projects;
+  data() {
+    return {
+      projects: []
+    };
+  },
+  beforeMount() {
+    this.getProjects();
+  },
+  methods: {
+    async getProjects() {
+      const ref = fireDb.collection("projects");
+      try {
+        const { docs } = await ref.get();
+        this.projects = docs.map(doc => {
+          const { id } = doc;
+          const data = doc.data();
+          return { id, ...data };
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
 };

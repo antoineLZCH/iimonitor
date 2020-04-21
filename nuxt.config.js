@@ -48,7 +48,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/firebase.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -62,7 +64,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
   ],
   toast: {
     position: 'bottom-center',

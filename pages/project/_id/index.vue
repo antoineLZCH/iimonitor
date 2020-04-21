@@ -21,7 +21,7 @@
               class="ml-4"
               :class="(task.done) ? 'done' : ''"
               @click="toggleDone(task.id)"
-            >{{ task.todo }}</v-list-item-title>
+            >{{ task }}</v-list-item-title>
           </v-list-item-content>
           <v-list-item-action>
             <v-btn text color="error" @click="removeTask(task)">Remove</v-btn>
@@ -33,14 +33,18 @@
 </template>
 
 <script>
+import { fireDb, fieldValue } from "~/plugins/firebase";
 export default {
-  computed: {
-    project() {
-      this.$store.commit("sortByWeight", this.$route.params.id);
-      return this.$store.state.projects.find(
-        p => p.id === this.$route.params.id
-      );
-    }
+  data() {
+    return {
+      project: {}
+    };
+  },
+  created() {
+    let ref = fireDb.collection("projects").doc(this.$route.params.id);
+    ref.get().then(project => {
+      this.project = project.data();
+    });
   },
   methods: {
     toggleDone(id) {
@@ -51,11 +55,9 @@ export default {
         }
       });
     },
-    removeTask(task) {
-      this.$store.commit("removeTask", {
-        id: this.$route.params.id,
-        task: task
-      });
+    async removeTask(task) {
+      let ref = await fireDb.collection("projects").doc(this.$route.params.id);
+      ref.update({ tasks: fieldValue.arrayRemove(task) });
       this.$toast.show("Success deleting task !");
     },
     weightUp(task) {
