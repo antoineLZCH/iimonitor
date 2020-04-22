@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import firebaseConf from '~/firebase.config.js'
 import 'firebase/firestore';
 // import 'firebase/auth';
