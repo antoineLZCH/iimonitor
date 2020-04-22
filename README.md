@@ -4,6 +4,22 @@
 
 ## Disponible à l'essai sur : IIMonitor[https://iimonitor.now.sh]
 
+### Features disponibles :
+- Ajout de projet (titre, description)
+- Ajout de tache dans le projet (titre)
+- Suppression de la tache dans le projet
+- Pomodoro
+
+### Difficultés / Non terminé :
+- Refresh à la création (sans ça, pas de visibilité sur ce qui est créé) : à fixer
+
+### TO DO
+- Virer firebase pour une api maison (en cours sur server, actuellement inutilisée)
+- Recréer le système de sort des taches
+- Ajouter les clients (et les rattacher aux projets)
+- Système d'authentification sécurisé avec OAUTH2
+- Personnalisation
+
 ## Build Setup
 
 ```bash
