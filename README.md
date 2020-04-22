@@ -2,7 +2,7 @@
 
 > IIMonitor Client
 
-## Disponible à l'essai sur : IIMonitor[https://iimonitor.now.sh]
+## Disponible à l'essai sur : [IIMonitor](https://iimonitor.now.sh)
 
 ### Features disponibles :
 - Ajout de projet (titre, description)
