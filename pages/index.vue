@@ -1,15 +1,22 @@
 <template>
   <v-layout row wrap>
-    <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
+    <v-col cols="8" class="d-flex flex-wrap">
+      <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
+    </v-col>
+    <v-col col="4">
+      <Pomodoro></Pomodoro>
+    </v-col>
   </v-layout>
 </template>
 
 <script>
 import ProjectCard from "~/components/ProjectCard";
 import { fireDb } from "~/plugins/firebase.js";
+import Pomodoro from "~/components/Pomodoro";
 export default {
   components: {
-    ProjectCard
+    ProjectCard,
+    Pomodoro
   },
   data() {
     return {

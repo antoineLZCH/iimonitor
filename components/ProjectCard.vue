@@ -1,7 +1,7 @@
 <template>
-  <v-flex pa-2 xs12 sm4>
+  <v-flex pa-2 xs12 sm6>
     <v-card>
-      <v-card-title class="secondary headline black--text">{{ project.title }}</v-card-title>
+      <v-card-title class="primary headline black--text">{{ project.title }}</v-card-title>
       <v-card-text class="py-6">
         <p>
           <strong>Description :</strong>
@@ -9,15 +9,15 @@
         </p>
         <p>
           <strong>Active Tasks:</strong>
-          <!-- {{ project.tasks.filter(task => !task.done).length }} -->
+          {{ project.tasks.length > 0 ? project.tasks.filter(task => !task.done).length : '0' }}
         </p>
         <p>
           <strong>Completed Tasks:</strong>
-          <!-- {{ project.tasks.filter(task => task.done).length }} -->
+          {{ project.tasks.length > 0 ? project.tasks.filter(task => task.done).length: '0' }}
         </p>
         <p>
           <strong>Total Tasks:</strong>
-          <!-- {{ project.tasks.length }} -->
+          {{ project.tasks.length }}
         </p>
       </v-card-text>
       <v-card-actions>
